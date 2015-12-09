@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		// test graph created
-		graph = new Graph(1000);
+		graph = new Graph(20000);
 
 		// prints out vertical line segment array and horizontal array
 		graph.graphPoints();
@@ -16,7 +16,6 @@ public class Main {
 		sortedPoints = graph.getAllPoints();
 		sort(sortedPoints,0,sortedPoints.length);
 		printList();
-		
 		tree = new BST();
 		algorithm(sortedPoints);
 	}
@@ -37,15 +36,19 @@ public class Main {
 				int yMin = curr.getY();
 				int yMax = curr.getY2();
 				
-				Node found = tree.findRange(yMin, yMax);
-				
+				BST tempTree = tree;
+				Node found = tempTree.findRange(yMin, yMax);
 				// if found is not null then there is an intersection
-				if (found != null) {
+				while (found != null) {
 					// in order to computer the intersection
 					Point xH = found.getPoint();
 					Point intersection = new Point(xH.getX(), xH.getY()-curr.getY());
 					System.out.println("Found an interection: "+intersection.toString()+" \n");
 					counter++;
+					
+					// check to see if there are any other intersections
+					tempTree.delete(xH.getY());
+					found = tempTree.findRange(yMin, yMax);
 				}
 			}
 		}
