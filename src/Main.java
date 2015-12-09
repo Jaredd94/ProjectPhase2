@@ -19,7 +19,13 @@ public class Main
         sort(sortedPoints, 0, sortedPoints.length);
         //printList();
         tree = new BST();
+        
+        // Here we will run the algorithm and print the running time
+        long startTime = System.currentTimeMillis();
         algorithm(sortedPoints);
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        System.out.println(totalTime);
     }
 
     public static void algorithm(Point[] list)
@@ -52,8 +58,8 @@ public class Main
                                 Point intersection =
                                     new Point(next.getX(), curr.getY());
                                 counter++;
-                                System.out.println("Found an interection: "
-                                    + intersection.toString() + " \n");
+                                /*System.out.println("Found an interection: "
+                                    + intersection.toString() + " \n");*/
                             }
                         }
                         tmpIter++;
@@ -97,8 +103,8 @@ public class Main
                         Point xH = found.getPoint();
                         Point intersection = new Point(curr.getX(), xH.getY());
                         counter++;
-                        System.out.println("Found an intersection: "
-                            + intersection.toString() + " \n");
+                        /*System.out.println("Found an intersection: "
+                            + intersection.toString() + " \n");*/
                     }
                 }
             }

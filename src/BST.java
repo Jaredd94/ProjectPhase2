@@ -10,7 +10,6 @@ public class BST
 {
     Node root;
 
-
     /**
      * Add a node to the BST.
      */
