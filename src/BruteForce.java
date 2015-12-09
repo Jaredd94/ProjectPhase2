@@ -30,5 +30,4 @@ public class BruteForce {
 		}
 		System.out.println("Number of intersections: " + counter);
 	}
-
 }
