@@ -1,13 +1,9 @@
-
-
 public class BruteForce
 {
-
     public static void main(String[] args)
     {
         Graph g = new Graph(20000);
         g.graphPoints();
-
         Line[] xLines = g.getXLines();
         Line[] yLines = g.getYLines();
         int counter = 0;
@@ -32,5 +28,4 @@ public class BruteForce
         }
         System.out.println("Number of intersections: " + counter);
     }
-
 }
