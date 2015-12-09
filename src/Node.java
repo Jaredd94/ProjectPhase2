@@ -7,26 +7,35 @@
  */
 public class Node
 {
-    int key;
-    String name;
+    private int key;
+    private Point point;
 
-    Node leftChild;
+	Node leftChild;
     Node rightChild;
 
     /**
      * Constructor.
      */
-    public Node(int k, String n)
+    public Node(int k, Point p)
     {
         key = k;
-        name = n;
+        point = p;
     }
+    
+    
+    public int getKey() {
+		return key;
+	}
 
-    /**
-     * Return the node description as a String.
-     */
-    public String toString()
-    {
-        return "Node " + name + "'s key is " + key;
-    }
+	public void setKey(int key) {
+		this.key = key;
+	}
+
+	public Point getPoint() {
+		return point;
+	}
+
+	public void setPoint(Point point) {
+		this.point = point;
+	}
 }

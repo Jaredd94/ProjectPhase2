@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Graph {
-
     private int NUM_LINES;
     private int MAX_VALUE = 100000;
     private int LINE_LENGTH = 100;
@@ -69,6 +68,4 @@ public class Graph {
     public Line[] getYLines() {
         return this.yLines;
     }
-
-
 }
