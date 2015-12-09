@@ -23,7 +23,7 @@ public class MainTest
     @Test
     public void testAlgo1()
     {
-        points = new Point[7];
+        points = new Point[9];
         Main.tree = tree;
 
         Point point1 = new Point(2, 6, 14);
@@ -44,6 +44,12 @@ public class MainTest
         Point point7 = new Point(14, 10);
         point7.setRightPoint();
 
+        Point point8 = new Point(6, 14);
+        point8.setLeftPoint();
+
+        Point point9 = new Point(12, 14);
+        point9.setRightPoint();
+
         points[0] = point1;
         points[1] = point2;
         points[2] = point3;
@@ -51,6 +57,8 @@ public class MainTest
         points[4] = point5;
         points[5] = point6;
         points[6] = point7;
+        points[7] = point8;
+        points[8] = point9;
 
 
         Main.sort(points, 0, points.length);
