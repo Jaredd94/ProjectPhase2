@@ -1,6 +1,4 @@
 /**
- * // -------------------------------------------------------------------------
-/**
  *  A Binary Search Tree
  *
  *  @author Kevin Buchiane
@@ -254,14 +252,5 @@ public class BST
         }
 
         return shiftNode;
-    }
-
-
-    /**
-     * Main
-     */
-    public static void main(String[] args)
-    {
-        // TODO Auto-generated method stub
     }
 }

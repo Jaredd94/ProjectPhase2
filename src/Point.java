@@ -1,8 +1,11 @@
 
 public class Point {
-	int xCord;
-	int yCord;
-	int y2Cord;
+	private int xCord;
+	private int yCord;
+	private int y2Cord;
+	
+	private boolean isLeft = false;
+	private boolean isRight = false;
 	
 	public Point(int x, int y){
 		this.xCord = x;
@@ -43,6 +46,25 @@ public class Point {
 	
 	public void setY2(int y2){
 		this.y2Cord = y2;
+	}
+	
+	public void setLeftPoint()
+	{
+		this.isLeft = true;
+	}
+	
+	public void setRightPoint(){
+		this.isRight = true;
+	}
+	
+	public boolean isLeft()
+	{
+		return this.isLeft;
+	}
+	
+	public boolean isRight()
+	{
+		return this.isRight;
 	}
 	
 	
