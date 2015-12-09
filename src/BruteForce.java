@@ -13,6 +13,9 @@ public class BruteForce
         int counter = 0;
         Line x = new Line();
         Line y = new Line();
+
+        //For each horizontal line iterate over all vertical lines and check for an intersection
+        //Going to be O(n^2)
         for (int i = 0; i < xLines.length; i++) {
             x = xLines[i];
             for (int j = 0; j < yLines.length; j++) {
