@@ -11,9 +11,9 @@ public class BST
     /**
      * Add a node to the BST.
      */
-    public void addNode(int key, String name)
+    public void addNode(int key, Point point)
     {
-        Node newNode = new Node(key, name);
+        Node newNode = new Node(key, point);
 
         if (root == null)
         {
@@ -27,7 +27,7 @@ public class BST
             while (true)
             {
                 parent = currentNode;
-                if (key < currentNode.key)
+                if (key < currentNode.getKey())
                 {
                     currentNode = currentNode.leftChild;
 
@@ -100,6 +100,34 @@ public class BST
     }
 
 
+    public Node findRange(int min, int max){
+    	Node currentNode = root;
+    	
+    	if (currentNode == null){
+    		return null;
+    	}
+    	
+        while (currentNode.getKey() > max || currentNode.getKey() < min)
+        {
+            if (currentNode.getKey() > max)
+            {
+                currentNode = currentNode.leftChild;
+            }
+            else
+            {
+                currentNode = currentNode.rightChild;
+            }
+
+            if (currentNode == null)
+            {
+                return null;
+            }
+        }
+
+        return currentNode;
+    }
+    
+    
     /**
      * Find a specific node.
      */
@@ -107,9 +135,9 @@ public class BST
     {
         Node currentNode = root;
 
-        while (currentNode.key != key)
+        while (currentNode.getKey() != key)
         {
-            if (key < currentNode.key)
+            if (key < currentNode.getKey())
             {
                 currentNode = currentNode.leftChild;
             }
@@ -135,14 +163,18 @@ public class BST
     {
         Node currentNode = root;
         Node parent = root;
-
+        
+        if (currentNode == null){
+        	return false;
+        }
+        
         boolean isLeftChild = true;
 
-        while (currentNode.key != key)
+        while (currentNode.getKey() != key)
         {
             parent = currentNode;
 
-            if (key < currentNode.key)
+            if (key < currentNode.getKey())
             {
                 isLeftChild = true;
                 currentNode = currentNode.leftChild;

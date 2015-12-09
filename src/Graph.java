@@ -3,7 +3,8 @@ import java.util.*;
 public class Graph {
 	
 	private int NUM_LINES;
-	private int MAX_VALUE = 1000000;
+	private int MAX_VALUE = 100000;
+	private int LINE_LENGTH = 100;
 	
 	private Point[] allPoints;
 	
@@ -24,7 +25,7 @@ public class Graph {
 			left_point.setLeftPoint();
 			allPoints[i] = left_point;
 			
-			right_point = new Point(rand_left_x+25, rand_left_y);
+			right_point = new Point(rand_left_x+LINE_LENGTH, rand_left_y);
 			right_point.setRightPoint();
 			allPoints[i+1] = right_point;
 			//System.out.print("{"+left_point.toString()+" ,"+right_point.toString()+"}");
@@ -38,7 +39,7 @@ public class Graph {
 			int rand_bottom_x = rand.nextInt(this.MAX_VALUE+1);
 			int rand_bottom_y = rand.nextInt(this.MAX_VALUE+1);
 			
-			point = new Point(rand_bottom_x, rand_bottom_y, rand_bottom_y+25);
+			point = new Point(rand_bottom_x, rand_bottom_y, rand_bottom_y+LINE_LENGTH);
 			allPoints[i] = point;
 			//System.out.print("{"+point.toString()+"}");
 		}
