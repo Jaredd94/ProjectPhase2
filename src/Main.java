@@ -42,7 +42,7 @@ public class Main {
 				while (found != null) {
 					// in order to computer the intersection
 					Point xH = found.getPoint();
-					Point intersection = new Point(xH.getX()+curr.getX(), xH.getY());
+					Point intersection = new Point(curr.getX(), xH.getY());
 					System.out.println("Found an interection: "+intersection.toString()+" \n");
 					counter++;
 					
