@@ -107,7 +107,7 @@ public class BST
     		return null;
     	}
     	
-        while (currentNode.getKey() > max || currentNode.getKey() < min)
+        while (currentNode.getKey() >= max || currentNode.getKey() <= min)
         {
             if (currentNode.getKey() > max)
             {
