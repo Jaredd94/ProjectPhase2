@@ -1,12 +1,15 @@
+import java.util.ArrayList;
+
 /**
- *  A Binary Search Tree
+ * A Binary Search Tree
  *
- *  @author Kevin Buchiane
- *  @version Dec 8, 2015
+ * @author Kevin Buchiane
+ * @version Dec 8, 2015
  */
 public class BST
 {
     Node root;
+
 
     /**
      * Add a node to the BST.
@@ -14,7 +17,6 @@ public class BST
     public void addNode(int key, Point point)
     {
         Node newNode = new Node(key, point);
-
         if (root == null)
         {
             root = newNode;
@@ -40,7 +42,6 @@ public class BST
                 else
                 {
                     currentNode = currentNode.rightChild;
-
                     if (currentNode == null)
                     {
                         parent.rightChild = newNode;
@@ -100,41 +101,36 @@ public class BST
     }
 
 
-    public Node findRange(int min, int max){
-    	Node currentNode = root;
-    	
-    	if (currentNode == null){
-    		return null;
-    	}
-    	
-        while (currentNode.getKey() >= max || currentNode.getKey() <= min)
-        {
-            if (currentNode.getKey() > max)
-            {
-                currentNode = currentNode.leftChild;
-            }
-            else
-            {
-                currentNode = currentNode.rightChild;
-            }
-
-            if (currentNode == null)
-            {
-                return null;
-            }
+    public ArrayList<Node> rangeSearchTree(
+        Node currentNode,
+        int lower,
+        int upper,
+        ArrayList<Node> found) {
+        if (currentNode == null) {
+            return null;
         }
-
-        return currentNode;
+        Node leftChild = currentNode.leftChild;
+        Node rightChild = currentNode.rightChild;
+        ArrayList<Node> ret = new ArrayList<Node>();
+        if (leftChild != null && currentNode.getKey() > lower) {
+            rangeSearchTree(leftChild, lower, upper, found);
+        }
+        if (currentNode.getKey() >= lower && currentNode.getKey() <= upper) {
+            found.add(currentNode);
+        }
+        if (rightChild != null && currentNode.getKey() < upper) {
+            rangeSearchTree(rightChild, lower, upper, found);
+        }
+        return found;
     }
-    
-    
+
+
     /**
      * Find a specific node.
      */
     public Node findNode(int key)
     {
         Node currentNode = root;
-
         while (currentNode.getKey() != key)
         {
             if (key < currentNode.getKey())
@@ -145,13 +141,11 @@ public class BST
             {
                 currentNode = currentNode.rightChild;
             }
-
             if (currentNode == null)
             {
                 return null;
             }
         }
-
         return currentNode;
     }
 
@@ -159,21 +153,19 @@ public class BST
     /**
      * Will delete a specific node from the BST.
      */
-    public boolean delete(int key)
+    public Node delete(int key)
     {
         Node currentNode = root;
         Node parent = root;
-        
-        if (currentNode == null){
-        	return false;
+        Node ret = root;
+        if (currentNode == null)
+        {
+            return null;
         }
-        
         boolean isLeftChild = true;
-
         while (currentNode.getKey() != key)
         {
             parent = currentNode;
-
             if (key < currentNode.getKey())
             {
                 isLeftChild = true;
@@ -184,13 +176,12 @@ public class BST
                 isLeftChild = false;
                 currentNode = currentNode.rightChild;
             }
-
             if (currentNode == null)
             {
-                return false;
+                return null;
             }
         }
-
+        ret = currentNode;
         if (currentNode.leftChild == null && currentNode.rightChild == null)
         {
             if (currentNode == root)
@@ -233,13 +224,12 @@ public class BST
             }
             else
             {
-                parent.rightChild = currentNode.leftChild;
+                parent.rightChild = currentNode.rightChild;
             }
         }
         else
         {
             Node shiftNode = getShiftingNode(currentNode);
-
             if (currentNode == root)
             {
                 root = shiftNode;
@@ -255,8 +245,7 @@ public class BST
 
             shiftNode.leftChild = currentNode.leftChild;
         }
-
-        return true;
+        return ret;
     }
 
 
@@ -284,5 +273,18 @@ public class BST
         }
 
         return shiftNode;
+    }
+
+    public String toString(Node n) {
+        if (n == null)
+            return "";
+        if (n.leftChild != null)
+            System.out.println(n.leftChild.getPoint());
+        if (n.rightChild != null)
+            System.out.println(n.rightChild.getPoint());
+
+        this.toString(n.leftChild);
+        this.toString(n.rightChild);
+        return n.getPoint().toString();
     }
 }

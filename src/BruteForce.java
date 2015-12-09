@@ -1,5 +1,4 @@
 public class BruteForce {
-
 	public static void main(String[] args) {
 		Graph g = new Graph(20000);
 		g.graphPoints();
@@ -21,8 +20,7 @@ public class BruteForce {
 					if (y.getFirstPoint().getY() <= x.getFirstPoint().getY()
 							&& y.getSecondPoint().getY() >= x.getFirstPoint()
 									.getY()) {
-						System.out.println("Intersection @ lines X: " + x
-								+ " and Y: " + y);
+						System.out.println("Intersection @ (" + x.getFirstPoint().getY() + ", " + y.getFirstPoint().getX() + ")");
 						counter++;
 					}
 				}

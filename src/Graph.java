@@ -25,11 +25,10 @@ public class Graph {
 			int rand_left_y = rand.nextInt(this.MAX_VALUE + 1);
 
 			left_point = new Point(rand_left_x, rand_left_y);
-			left_point.setLeftPoint();
-			allPoints[i] = left_point;
-
 			right_point = new Point(rand_left_x + LINE_LENGTH, rand_left_y);
-			right_point.setRightPoint();
+			left_point.setPartner(right_point);
+			right_point.setPartner(left_point);
+            allPoints[i] = left_point;
 			allPoints[i + 1] = right_point;
 			// System.out.print("{"+left_point.toString()+" ,"+right_point.toString()+"}");
 
